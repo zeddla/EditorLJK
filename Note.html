@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Berbagai Tipe Input HTML</title>
+    <!-- Memuat Tailwind CSS CDN untuk styling yang mudah -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menggunakan font Inter */
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 sm:p-10 border border-gray-100">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 border-b pb-3">
+            Kumpulan Elemen Input dan Tombol HTML
+        </h1>
+        <p class="text-gray-600 mb-8">
+            Berikut adalah demonstrasi berbagai tipe elemen `&lt;input&gt;` dan `&lt;button&gt;` yang bisa Anda gunakan dalam form.
+        </p>
+
+        <form onsubmit="event.preventDefault(); showFormData();" id="inputForm">
+            <!-- Container untuk semua Input Fields -->
+            <div class="space-y-6">
+
+                <!-- Kategori 1: Input Teks dan Angka Dasar -->
+                <h2 class="text-2xl font-semibold text-indigo-700 pt-4 pb-2 border-t border-indigo-100">
+                    Input Teks dan Angka
+                </h2>
+                
+                <!-- Input Teks Biasa -->
+                <div class="form-group">
+                    <label for="text_input" class="block text-sm font-medium text-gray-700 mb-1">Text (Teks)</label>
+                    <input type="text" id="text_input" placeholder="Masukkan teks di sini" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" required>
+                </div>
+
+                <!-- Input Password -->
+                <div class="form-group">
+                    <label for="password_input" class="block text-sm font-medium text-gray-700 mb-1">Password (Kata Sandi)</label>
+                    <input type="password" id="password_input" placeholder="Minimal 6 karakter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+                
+                <!-- Input Angka -->
+                <div class="form-group">
+                    <label for="number_input" class="block text-sm font-medium text-gray-700 mb-1">Number (Angka)</label>
+                    <input type="number" id="number_input" placeholder="Hanya angka yang diterima" min="0" max="100" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+
+                <!-- Input Email -->
+                <div class="form-group">
+                    <label for="email_input" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="email_input" placeholder="contoh@domain.com" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+                
+                <!-- Textarea (Bukan <input>, tapi penting untuk input multi-baris) -->
+                <div class="form-group">
+                    <label for="textarea_input" class="block text-sm font-medium text-gray-700 mb-1">Textarea (Input Multi-Baris)</label>
+                    <textarea id="textarea_input" rows="3" placeholder="Tuliskan komentar atau deskripsi panjang di sini..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"></textarea>
+                </div>
+
+                <!-- Kategori 2: Input Pemilihan dan Status -->
+                <h2 class="text-2xl font-semibold text-indigo-700 pt-6 pb-2 border-t border-indigo-100">
+                    Input Pilihan dan Status
+                </h2>
+
+                <!-- Checkbox -->
+                <div class="form-group flex items-center">
+                    <input type="checkbox" id="checkbox_input" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                    <label for="checkbox_input" class="ml-2 block text-sm text-gray-700">Checkbox (Saya setuju dengan ketentuan)</label>
+                </div>
+
+                <!-- Radio Buttons -->
+                <div class="form-group">
+                    <span class="block text-sm font-medium text-gray-700 mb-2">Radio Button (Pilih Satu Opsi)</span>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input type="radio" id="radio_a" name="radio_group" value="Opsi A" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                            <label for="radio_a" class="ml-2 text-sm text-gray-700">Opsi A</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="radio_b" name="radio_group" value="Opsi B" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                            <label for="radio_b" class="ml-2 text-sm text-gray-700">Opsi B</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Range Slider -->
+                <div class="form-group">
+                    <label for="range_input" class="block text-sm font-medium text-gray-700 mb-1">Range Slider (<span id="rangeValue">50</span>)</label>
+                    <input type="range" id="range_input" min="0" max="100" value="50" oninput="document.getElementById('rangeValue').textContent = this.value" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+
+
+                <!-- Kategori 3: Input Tanggal, Waktu, dan Warna -->
+                <h2 class="text-2xl font-semibold text-indigo-700 pt-6 pb-2 border-t border-indigo-100">
+                    Input Spesialis
+                </h2>
+
+                <!-- Input Tanggal -->
+                <div class="form-group">
+                    <label for="date_input" class="block text-sm font-medium text-gray-700 mb-1">Date (Tanggal)</label>
+                    <input type="date" id="date_input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+
+                <!-- Input Waktu -->
+                <div class="form-group">
+                    <label for="time_input" class="block text-sm font-medium text-gray-700 mb-1">Time (Waktu)</label>
+                    <input type="time" id="time_input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+
+                <!-- Input Warna -->
+                <div class="form-group flex items-center space-x-4">
+                    <label for="color_input" class="text-sm font-medium text-gray-700">Color (Warna)</label>
+                    <input type="color" id="color_input" value="#4F46E5" class="h-10 w-10 border-none rounded-lg cursor-pointer">
+                </div>
+
+                <!-- Input File -->
+                <div class="form-group">
+                    <label for="file_input" class="block text-sm font-medium text-gray-700 mb-1">File (Upload Berkas)</label>
+                    <input type="file" id="file_input" class="block w-full text-sm text-gray-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-indigo-50 file:text-indigo-700
+                        hover:file:bg-indigo-100 cursor-pointer"
+                        accept=".pdf, .jpg, .png">
+                </div>
+            </div>
+            
+            <!-- Kategori 4: Button (Tombol) -->
+            <h2 class="text-2xl font-semibold text-indigo-700 pt-8 pb-4 border-t border-indigo-100 mt-8">
+                Tombol (<code class="font-mono">&lt;button&gt;</code> dan <code class="font-mono">&lt;input type="button"&gt;</code>)
+            </h2>
+
+            <!-- Tombol Aksi -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+                <!-- 1. Tombol Utama (Submit Form) -->
+                <button type="submit" class="w-full py-3 px-6 bg-indigo-600 text-white font-bold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-150 ease-in-out transform hover:scale-[1.02]">
+                    Submit (<code class="font-mono">type="submit"</code>)
+                </button>
+
+                <!-- 2. Tombol Reset Form -->
+                <button type="reset" class="w-full py-3 px-6 bg-red-500 text-white font-bold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-opacity-50 transition duration-150 ease-in-out transform hover:scale-[1.02]">
+                    Reset (<code class="font-mono">type="reset"</code>)
+                </button>
+
+                <!-- 3. Tombol Standar (General Action) -->
+                <button type="button" onclick="alert('Tombol Aksi Ditekan!')" class="w-full py-3 px-6 bg-gray-200 text-gray-800 font-bold rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-400 focus:ring-opacity-50 transition duration-150 ease-in-out transform hover:scale-[1.02]">
+                    Button (<code class="font-mono">type="button"</code>)
+                </button>
+
+                <!-- 4. Input Button (Gaya Lama) -->
+                <input type="button" value="Input Button" onclick="alert('Input Button Ditekan!')" class="w-full py-3 px-6 bg-teal-500 text-white font-bold rounded-lg shadow-md cursor-pointer hover:bg-teal-600 focus:outline-none focus:ring-4 focus:ring-teal-500 focus:ring-opacity-50 transition duration-150 ease-in-out transform hover:scale-[1.02]">
+
+                <!-- 5. Input Submit (Gaya Lama) -->
+                <input type="submit" value="Input Submit" class="w-full py-3 px-6 bg-orange-500 text-white font-bold rounded-lg shadow-md cursor-pointer hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-500 focus:ring-opacity-50 transition duration-150 ease-in-out transform hover:scale-[1.02]">
+
+            </div>
+        </form>
+
+        <!-- Pesan Output Hasil Submit -->
+        <div id="outputMessage" class="mt-8 p-4 bg-green-100 text-green-800 border-l-4 border-green-500 rounded-lg hidden">
+            <h3 class="font-bold text-lg mb-1">Data Form Tersimpan:</h3>
+            <pre id="formData" class="whitespace-pre-wrap text-sm"></pre>
+        </div>
+
+        <!-- Catatan Penting: Output alert() diganti dengan pesan di UI -->
+        <div id="customAlert" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full">
+                <h4 class="text-xl font-bold mb-3 text-indigo-700">Peringatan Aksi</h4>
+                <p id="alertText" class="text-gray-700 mb-4">Pesan standar.</p>
+                <button onclick="closeCustomAlert()" class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700">Tutup</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Mengganti fungsi alert() bawaan browser agar tidak mengganggu di lingkungan iFrame
+        const originalAlert = window.alert;
+        window.alert = function(message) {
+            document.getElementById('alertText').textContent = message;
+            document.getElementById('customAlert').classList.remove('hidden');
+        };
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').classList.add('hidden');
+        }
+
+        // Fungsi untuk menampilkan data form yang disubmit
+        function showFormData() {
+            const form = document.getElementById('inputForm');
+            const output = document.getElementById('formData');
+            const outputMessage = document.getElementById('outputMessage');
+            
+            const data = {
+                text: form.text_input.value,
+                password: form.password_input.value,
+                number: form.number_input.value,
+                email: form.email_input.value,
+                textarea: form.textarea_input.value,
+                checkbox: form.checkbox_input.checked ? "Ya" : "Tidak",
+                radio: form.radio_group.value || "Belum Dipilih",
+                range: form.range_input.value,
+                date: form.date_input.value,
+                time: form.time_input.value,
+                color: form.color_input.value,
+                file: form.file_input.files.length > 0 ? form.file_input.files[0].name : "Tidak Ada File",
+            };
+
+            output.textContent = JSON.stringify(data, null, 2);
+            outputMessage.classList.remove('hidden');
+            
+            // Scroll ke bagian pesan output
+            outputMessage.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
